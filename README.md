@@ -4,7 +4,7 @@
 
 - [github地址]()
 
-- [pypi地址]()
+- [pypi地址](https://pypi.org/project/cnsenti/)
 
 
 
@@ -26,22 +26,8 @@ pip install cnsenti
 
 #### 方法二
 
-方法一可能因为网络问题，或者你设置了国内镜像，暂时找不到cnsenti包，所以需要
-
-1. 在 [**PyPi官网**](https://pypi.org)  ``https://pypi.org``搜索**cnsenti**, 找到页面中的whl文件，下载，
-
-2. whl下载完成后放置于桌面。例如我当前版本的whl文件名为  cnsenti-0.0.1-py3-none-any.whl ，
-
-3. 安装步骤，命令行打开后输入
-
 ```
-cd desktop
-```
-
-4. 最后安装
-
-```
-pip install cnsenti-0.0.1-py3-none-any.whl 
+pip install cnsenti -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ```
 
 
