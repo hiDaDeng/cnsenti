@@ -1,18 +1,4 @@
-一、cnsenti
 
-二、快速上手
-
-三、文档
-- 3.1 emotion_count(text)
-- 3.2 sentiment_count(text)
-- 3.3 sentiment_calculate(text)
-- 3.4 自定义词典
-
-四、关于词典
-
-如果
-
-更多
 
 # 一、cnsenti
 
