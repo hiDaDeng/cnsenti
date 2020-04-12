@@ -237,8 +237,8 @@ sentiment_calculate {'sentences': 1, 'words': 10, 'pos': 0, 'neg': 0}
 
 ```python
 senti = Sentiment(pos='正面词自定义.txt',  
-                  neg='负面词自定义.txt',  #负面词典txt文件相对路径
-                  merge=False,  #merge=True融合自定义词典和cnsenti自带词典；merge=False只使用自定义词典
+                  neg='负面词自定义.txt', 
+                  merge=True,  
                   encoding='utf-8')
 ```
 
