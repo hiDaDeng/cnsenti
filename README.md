@@ -4,9 +4,9 @@
 
 中文情感分析库(Chinese Sentiment))可对文本进行情绪分析、正负情感分析。
 
-- [github地址]()
+- [github地址](https://github.com/thunderhit/cnsenti) ``https://github.com/thunderhit/cnsenti``
 
-- [pypi地址](https://pypi.org/project/cnsenti/)
+- [pypi地址](https://pypi.org/project/cnsenti/)  ``https://pypi.org/project/cnsenti/``
 
 
 
@@ -204,11 +204,50 @@ sentiment_calculate
 
 
 
-cnsenti中只有Sentiment类支持正负情感词典自定义，自定义词典需要满足
+我们先看看没有情感形容词的情形
+
+```python
+from cnsenti import Sentiment
+senti = Sentiment()      #两txt均为utf-8编码
+test_text = '这家公司是行业的引领者，是中流砥柱。'
+result1 = senti.sentiment_count(test_text)
+result2 = senti.sentiment_calculate(test_text)
+print('sentiment_count',result1)
+print('sentiment_calculate',result2)
+```
+
+Run
+
+```
+sentiment_count {'words': 10, 'sentences': 1, 'pos': 0, 'neg': 0}
+sentiment_calculate {'sentences': 1, 'words': 10, 'pos': 0, 'neg': 0}
+```
+
+如我所料，虽然句子是正面的，但是因为cnsenti自带的情感词典仅仅是形容词情感词典，对于很多场景而言，适用性有限，所以pos=0。
+
+#### 3.4.1 自定词典格式
+
+好在cnsenti支持导入自定义词典，但目前**只有Sentiment类支持导入自定义正负情感词典**，自定义词典需要满足
 
 - 必须为txt文件
 - 原则上建议encoding为utf-8
 - txt文件每行只有一个词
+
+#### 3.4.2 Sentiment自定义词典参数
+
+```python
+senti = Sentiment(pos='正面词自定义.txt',  
+                  neg='负面词自定义.txt',  #负面词典txt文件相对路径
+                  merge=False,  #merge=True融合自定义词典和cnsenti自带词典；merge=False只使用自定义词典
+                  encoding='utf-8')
+```
+
+- pos 正面情感词典txt文件路径
+- neg 负面情感词典txt文件路径
+- merge 布尔值；merge=True，cnsenti会融合自定义词典和cnsenti自带词典；merge=False，cnsenti只使用自定义词典
+- encoding  两txt均为utf-8编码
+
+#### 3.4.3 自定义词典使用案例
 
 这部分我放到test文件夹内,代码和自定义词典均在test内，所以我使用相对路径设定自定义词典的路径
 
@@ -219,17 +258,38 @@ cnsenti中只有Sentiment类支持正负情感词典自定义，自定义词典�
    |---负面词自定义.txt
 ```
 
-代码.py文件内
+**正面词自定义.txt**  
+
+```
+中流砥柱
+引领者
+```
+
+
 
 ```python
 from cnsenti import Sentiment
 
 senti = Sentiment(pos='正面词自定义.txt',  #正面词典txt文件相对路径
                   neg='负面词自定义.txt',  #负面词典txt文件相对路径
+                  merge=True,             #融合cnsenti自带词典和用户导入的自定义词典
                   encoding='utf-8')      #两txt均为utf-8编码
+
+test_text = '这家公司是行业的引领者，是中流砥柱。今年的业绩非常好。'
+result1 = senti.sentiment_count(test_text)
+result2 = senti.sentiment_calculate(test_text)
+print('sentiment_count',result1)
+print('sentiment_calculate',result2)
 ```
 
-经过上面的设置就可以使用自定义词典。
+Run
+
+```
+sentiment_count {'words': 16, 'sentences': 2, 'pos': 2, 'neg': 0}
+sentiment_calculate {'sentences': 2, 'words': 16, 'pos': 5, 'neg': 0}
+```
+
+上面参数我们传入了正面自定义词典和负面自定义词典，并且使用了融合模式（merge=True），可以利用cnsenti自带的词典和刚刚导入的自定义词典进行情感计算。
 
 
 
