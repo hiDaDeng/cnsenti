@@ -28,27 +28,45 @@ class Sentiment(object):
 
     使用自定义txt词典(建议utf-8编码)，
     目前仅支持pos和neg两类词典，每行一个词语。
+    merge=True，cnsenti会融合自带的词典和用户导入的自定义词典；merge=False，cnsenti只使导入的自定义词典
     其中pos和neg为txt词典文件路径，encoding为txt词典的编码方式
     这里是utf-8编码的文件，初始化方式
         >>>from cnsenti import Sentiment
-        >>>senti = Sentiment(pos='正面词典.txt', neg='负面词典.txt', encoding='utf-8')
+        >>>senti = Sentiment(pos='正面词典.txt', neg='负面词典.txt', merge=True, encoding='utf-8')
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, merge=True, pos=None, neg=None, encoding='utf-8'):
         """
-        :param kwargs: 支持传入的关键词参数有pos、neg和encoding。
         :pos 正面词典的txt文件
         :neg 负面词典的txt文件
+        :merge 默认merge=True,即融合自带情感词典和自定义词典。merge=False，只使用自定义词典。
         :encoding 词典txt文件的编码，默认为utf-8。如果是其他编码，该参数必须使用
         """
         self.Poss = self.load_dict('pos.pkl')
         self.Negs = self.load_dict('neg.pkl')
-        if kwargs.get('pos'):
-            del self.Poss
-            self.Poss = self.load_diydict(file=kwargs.get('pos'), encoding=kwargs.get('encoding'))
-        if kwargs.get('neg'):
-            del self.Negs
-            self.Negs = self.load_diydict(file=kwargs.get('neg'), encoding=kwargs.get('encoding'))
+
+        if pos:
+            if merge:
+                del self.Poss
+                self.Poss = self.load_diydict(file=pos, encoding=encoding)+self.load_dict('pos.pkl')
+                jieba.load_userdict(pos)
+
+            else:
+                del self.Poss
+                self.Poss = self.load_diydict(file=pos, encoding=encoding)
+                jieba.load_userdict(pos)
+
+
+        if neg:
+            if merge:
+                del self.Negs
+                self.Negs = self.load_diydict(file=neg, encoding=encoding)+self.load_dict('neg.pkl')
+                jieba.load_userdict(pos)
+            else:
+                del self.Negs
+                self.Negs = self.load_diydict(file=neg, encoding=encoding)
+                jieba.load_userdict(pos)
+
         self.Denys = self.load_dict('deny.pkl')
 
         self.Extremes = self.load_dict('extreme.pkl')
@@ -87,7 +105,8 @@ class Sentiment(object):
         :return: 返回情感信息，形如{'sentences': 2, 'words': 24, 'pos': 46.0, 'neg': 0.0}
         """
         length, sentences, pos, neg = 0, 0, 0, 0
-        sentences = len(re.split('[\.。！!？\?\n;；]+', text))
+        sentences = [s for s in re.split('[\.。！!？\?\n;；]+', text) if s]
+        sentences = len(sentences)
         words = jieba.lcut(text)
         length = len(words)
         for w in words:
@@ -119,7 +138,7 @@ class Sentiment(object):
         :param text:  文本字符串
         :return: 返回情感信息，刑如{'sentences': 2, 'words': 24, 'pos': 46.0, 'neg': 0.0}
         """
-        sentences = re.split('[\.。！!？\?\n;；]+', text)
+        sentences = [s for s in re.split('[\.。！!？\?\n;；]+', text) if s]
         wordnum = len(jieba.lcut(text))
         count1 = []
         count2 = []
@@ -219,6 +238,7 @@ class Sentiment(object):
             neg = np.sum(score_array[:, 1])
             pos_result.append(pos)
             neg_result.append(neg)
+
         pos_score = np.sum(np.array(pos_result))
         neg_score = np.sum(np.array(neg_result))
         score = {'sentences': len(count2),
