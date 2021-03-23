@@ -8,6 +8,7 @@
 
 - [pypi地址](https://pypi.org/project/cnsenti/)  ``https://pypi.org/project/cnsenti/``
 
+- [视频课-**Python网络爬虫与文本数据分析**](https://ke.qq.com/course/482241?tuin=163164df)
 
 
 ### 特性
