@@ -61,11 +61,11 @@ class Sentiment(object):
             if merge:
                 del self.Negs
                 self.Negs = self.load_diydict(file=neg, encoding=encoding)+self.load_dict('neg.pkl')
-                jieba.load_userdict(pos)
+                jieba.load_userdict(neg)
             else:
                 del self.Negs
                 self.Negs = self.load_diydict(file=neg, encoding=encoding)
-                jieba.load_userdict(pos)
+                jieba.load_userdict(neg)
 
         self.Denys = self.load_dict('deny.pkl')
 
