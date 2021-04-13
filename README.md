@@ -341,4 +341,6 @@ sentiment_calculate {'sentences': 2, 'words': 16, 'pos': 5, 'neg': 0}
 
 - [知乎专栏：数据科学家](https://zhuanlan.zhihu.com/dadeng)
 
-    
+<br>
+
+![](大邓和他的Python.png)
