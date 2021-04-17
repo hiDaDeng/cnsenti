@@ -40,7 +40,7 @@ pip install cnsenti -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ```
 
 
-
+<br>
 
 
 # 二、快速上手
@@ -92,7 +92,7 @@ Run
 '惊': 0}
 ```
 
-
+<br>
 
 #  三、文档
 
@@ -304,7 +304,7 @@ sentiment_calculate {'sentences': 2, 'words': 16, 'pos': 5, 'neg': 0}
 
 我设计的这个库目前仅能支持两类型pos和neg，如果你的研究问题是两分类问题，如好坏、美丑、善恶、正邪、友好敌对，你就可以定义两个txt文件，分别赋值给pos和neg，就可以使用cnsenti库。
 
-
+<br>
 
 # 四、关于词典
 
@@ -315,7 +315,7 @@ sentiment_calculate {'sentences': 2, 'words': 16, 'pos': 5, 'neg': 0}
 我封装了刘焕勇基于so_pmi算法的新词发现代码，将该库其命名为**wordexpansion**。wordexpansion可以极大的提高提高自定义词典的构建速度，感兴趣的童鞋详情可以访问[wordexpansion项目地址](https://github.com/thunderhit/wordexpansion)
 
 
-
+<br>
 
 
 # 如果
