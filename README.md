@@ -5,7 +5,7 @@
 
 中文情感分析库(Chinese Sentiment))可对文本进行情绪分析、正负情感分析。
 
-- [github地址](https://github.com/thunderhit/cnsenti) ``https://github.com/thunderhit/cnsenti``
+- [github地址](https://github.com/hidadeng/cnsenti) ``https://github.com/thunderhit/cnsenti``
 
 - [pypi地址](https://pypi.org/project/cnsenti/)  ``https://pypi.org/project/cnsenti/``
 
