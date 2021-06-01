@@ -1,6 +1,8 @@
 
 ![wbt5's GitHub stats](https://github-readme-stats.vercel.app/api?username=hidadeng&show_icons=true&theme=default&include_all_commits=true&count_private=true)
 
+# [englsih document](README英文.md)
+
 # 一、cnsenti
 
 中文情感分析库(Chinese Sentiment))可对文本进行情绪分析、正负情感分析。
