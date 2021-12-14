@@ -331,11 +331,16 @@ sentiment_calculate {'sentences': 2, 'words': 16, 'pos': 5, 'neg': 0}
 # 引用
 如果觉得有帮助，可以说明cnsenti的使用出处
 
+
+``Deng, X. (2019). cnsenti: An open-source python library for chinese text sentiment analysis. https://github.com/hiDaDeng/cnsenti.``
+
+
 ```
-@misc{cnsenti,
+@misc{Deng2019,
 title={cnsenti: An Open-Source Python Library for Chinese Text Sentiment Analysis},
-url={https://github.com/hiDaDeng/cnsenti},
 author={Xudong Deng},
+journal = {GitHub repository},
+howpublished = {\url{https://github.com/hiDaDeng/cnsenti}},
 year={2019}
 }
 ```
