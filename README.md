@@ -2,7 +2,6 @@
 
 <br>
 
-![wbt5's GitHub stats](https://github-readme-stats.vercel.app/api?username=hidadeng&show_icons=true&theme=default&include_all_commits=true&count_private=true)
 
 # [englsih document](README英文.md)
 
