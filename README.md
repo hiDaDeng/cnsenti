@@ -3,6 +3,8 @@
 <br>
 
 
+![](img/cnsenti.png)
+
 # [englsih document](README英文.md)
 
 <br>
