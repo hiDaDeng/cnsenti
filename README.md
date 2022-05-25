@@ -3,6 +3,8 @@
 
 # cnsenti
 
+[中文文档](chinese_readme.md)
+
 The cnsenti library can perform sentiment analysis emotion analysis on chinese texts.
 
 
