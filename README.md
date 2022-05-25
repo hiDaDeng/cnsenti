@@ -1,3 +1,4 @@
+Now **cnsenti** has been integrated into **[cntext](https://github.com/hiDaDeng/cntext/)**, welcome to star!
 
 ![](img/cnsenti.png)
 
