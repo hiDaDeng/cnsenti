@@ -1,5 +1,7 @@
 Now **cnsenti** has been integrated into **[cntext](https://github.com/hiDaDeng/cntext/)**, welcome to star!
 
+cnsenti已停止维护，相关功能全部合并到 **[cntext](https://github.com/hiDaDeng/cntext/)库中**。
+
 ![](img/cnsenti.png)
 
 # cnsenti
